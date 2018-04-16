@@ -1,0 +1,78 @@
+#include<stdio.h>
+
+#include<stdlib.h>
+
+#include<unistd.h>
+
+#include<sys/types.h>
+
+#include<string.h>
+
+#include<sys/wait.h>
+
+
+int main()
+
+{
+
+    	pid_t p;
+
+	int fd1[2]; // Used to store two ends of first pipe
+
+	int fd2[2]; // Used to store two ends of second pipe
+
+
+	char buff[100];
+
+
+	p = fork();
+
+
+	if (p < 0)
+
+	{
+
+		printf( "fork Failed" );
+
+		return 1;
+
+	}
+
+
+	// Parent process
+
+	else if (p > 0)
+
+	{
+
+		wait(NULL);
+
+	}
+
+
+	// child process
+
+	else
+
+	{
+
+   
+	printf("**process done in child**\n");
+	char buff[200];
+
+	int f1,f2,n;
+
+	f1=open("kish.c",O_RDONLY,0777);
+
+	n=read (f1,buff,200)
+
+	f2=open("kishore.c",O_WRONLY,0777);
+
+	write(f2,buff,n)
+
+
+	exit(0);
+
+	}
+
+}
